@@ -24,8 +24,17 @@ Android Library for scanning document MRZ documents.
 Add the Following to your gradle file.
 
 ```java
-         NEW VERSION JITPACK DEPENDENCY
-         //TODO add dependency
+      //add jitpack
+        allprojects {
+            repositories {
+              ...
+              maven { url 'https://jitpack.io' }
+            }
+          }
+
+          //add dependency, check on the lastest release tag
+        implementation 'com.github.AmosKorir:mrz_scanner:Tag'
+
 ```
 
  How to start reading
