@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+<style name="leaf">
+    <item name="cornerSizeTopLeft">70%</item>           //can specify corner position
+    <!--<item name="cornerFamilyTopLeft">cut</item>-->
+    <item name="cornerSizeBottomRight">70%</item>
+    <!--<item name="cornerFamilyBottomRight">cut</item>-->
+</style>
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MRZCardReader</string>
+    <string name="confirm">Confirm</string>
+    <string name="doc_no">Doc No:</string>
+    <string name="id">ID:</string>
+    <string name="dob">DOB:</string>
+    <string name="gender">Gender:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="middle_name">Middle Name:</string>
+    <string name="first_name">First Name:</string>
+    <string name="rescan">Rescan</string>
+</resources>
