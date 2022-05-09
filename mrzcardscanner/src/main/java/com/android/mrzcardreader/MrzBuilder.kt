@@ -6,7 +6,7 @@ import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts
-import com.android.mrzcardreader.camera.models.IdData
+import com.android.mrzcardreader.camera.models.CardDocument
 
 class MrzBuilder(
     private val context: Context,
@@ -20,7 +20,7 @@ class MrzBuilder(
                 val intent: Intent? = result.data
                 intent?.let {
                     try {
-                        val card = it.extras?.getSerializable("card") as IdData
+                        val card = it.extras?.getSerializable("card") as CardDocument
                         cardResponse?.onCardRead(card)
                     } catch (e: Exception) {
                         cardResponse?.onFailed(e)

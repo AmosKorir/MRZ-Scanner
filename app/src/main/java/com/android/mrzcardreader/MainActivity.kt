@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.android.mrzcardreader.camera.MrzCameraManager
-import com.android.mrzcardreader.camera.models.IdData
+import com.android.mrzcardreader.camera.models.CardDocument
 import com.android.mrzcardreader.databinding.ActivityMainBinding
 
 
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private fun openScanner() {
         MrzBuilder(this, this.activityResultRegistry)
             .setOnCardDetailsResponse(object : CardDetailResponse {
-                override fun onCardRead(card: IdData) {
+                override fun onCardRead(card: CardDocument) {
                     Toast.makeText(this@MainActivity, card.toString(), Toast.LENGTH_SHORT).show()
 
                 }

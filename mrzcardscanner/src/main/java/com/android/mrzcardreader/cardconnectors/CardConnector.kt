@@ -1,13 +1,15 @@
 package com.android.mrzcardreader.cardconnectors
-import android.util.Log
+
+import android.media.AudioManager
+import android.media.ToneGenerator
 import com.android.mrzcardreader.camera.MRZResponse
-import com.android.mrzcardreader.camera.models.IdData
+import com.android.mrzcardreader.camera.models.CardDocument
 import com.google.mlkit.vision.text.Text
 import ocr.MrzReader
 
 
 object CardConnector {
-    val mrzReader = MrzReader()
+    private val mrzReader = MrzReader()
 
     fun onDetailsCaptured(details: MutableList<Text.TextBlock>, mrzResponse: MRZResponse) {
         val mrzString = cleanMRZ(details.last().text)
@@ -19,10 +21,15 @@ object CardConnector {
         if (!isValidCard) {
 
             return
-        }else{
-            val readCard = mrzReader.readDocument(cardType, mrzString)
+        } else {
 
-            val card = IdData(
+            kotlin.runCatching {
+                val toneGen1 = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
+                toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150)
+            }
+
+            val readCard = mrzReader.readDocument(cardType, mrzString)
+            val card = CardDocument(
                 readCard.firstName,
                 readCard.secondName,
                 readCard.lastName,
@@ -31,22 +38,21 @@ object CardConnector {
                 readCard.dateOfBirth,
                 readCard.id,
                 readCard.country,
+                readCard.documentType
             )
             mrzResponse.cardResponse(card)
         }
-
-
     }
 
-    //TODO implement clearing
-    fun clear(){
-       // mrzReader
+    fun clear() {
+        mrzReader.clear()
     }
 
     private fun cleanMRZ(details_: String): String {
         var details = details_.replace(" ", "")
         details = details.replace("«", "<")
         details = details.replace("e", "<")
+        details = details.replace("c", "<")
         details = details.replace("€", "<")
         return details
     }

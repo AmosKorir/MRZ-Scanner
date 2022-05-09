@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.android.mrzcardreader.camera.MrzCameraManager
-import com.android.mrzcardreader.camera.models.IdData
+import com.android.mrzcardreader.camera.models.CardDocument
 import com.android.mrzcardscanner.databinding.ActivityMrzBinding
 
 
@@ -68,7 +68,7 @@ class MainMrzActivity : AppCompatActivity(), CardResult {
 
     }
 
-    override fun cardDetails(card: IdData) {
+    override fun cardDetails(card: CardDocument) {
         val intent = Intent("MRZ_ACTION")
         intent.putExtra("card", card)
         setResult(505, intent)

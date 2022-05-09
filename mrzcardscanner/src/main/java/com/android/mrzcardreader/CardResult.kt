@@ -1,7 +1,7 @@
 package com.android.mrzcardreader
 
-import com.android.mrzcardreader.camera.models.IdData
+import com.android.mrzcardreader.camera.models.CardDocument
 
  interface CardResult {
-    fun cardDetails(card:IdData)
+    fun cardDetails(card:CardDocument)
 }

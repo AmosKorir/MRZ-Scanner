@@ -1,9 +1,9 @@
 package com.android.mrzcardreader
 
-import com.android.mrzcardreader.camera.models.IdData
+import com.android.mrzcardreader.camera.models.CardDocument
 
  interface CardDetailResponse {
-    fun onCardRead(card: IdData)
+    fun onCardRead(card: CardDocument)
 
     fun onCardReadingCancelled()
 

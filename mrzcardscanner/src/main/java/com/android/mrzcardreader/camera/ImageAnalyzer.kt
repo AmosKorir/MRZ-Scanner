@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import com.android.mrzcardreader.CardResult
-import com.android.mrzcardreader.camera.models.IdData
+import com.android.mrzcardreader.camera.models.CardDocument
 import com.android.mrzcardreader.camera.overlay.TextGraphic
 import com.android.mrzcardreader.camera.overlay.TextOverlay
 import com.android.mrzcardreader.cardconnectors.CardConnector
@@ -119,12 +119,12 @@ class ImageAnalyzer(
         return recognizer.process(image)
     }
 
-    override fun cardResponse(card: IdData) {
+    override fun cardResponse(card: CardDocument) {
         updateCardDetails(card)
         maximizedCard()
     }
 
-    private fun updateCardDetails(idData: IdData) {
+    private fun updateCardDetails(idData: CardDocument) {
         scannerRunning = false
         val rootView = activityMainBinding.cardLayout.rootView
         rootView.findViewById<TextView>(R.id.fNameTv).text = idData.firstName
